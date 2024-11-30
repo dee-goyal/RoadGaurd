@@ -1,5 +1,4 @@
 # RoadGuard 🚗  
-**Developed by Deepika Goyal**  
 
 RoadGuard is a smart road safety application that uses AI to detect potholes in real-time, alert drivers with a sound, and automatically log complaints for road repairs. It ensures safer travels by addressing road issues proactively.  
 
@@ -72,8 +71,6 @@ RoadGuard/
 
 ---
 
-### Screenshots and Demo  
-*(Add images or video links here)*  
 
 ---
 
