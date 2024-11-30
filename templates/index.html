@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pothole Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/complaints">Complaints</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-container">
+            <h2>Pothole Detection Dashboard</h2>
+
+            <div class="dashboard-grid">
+                <!-- Webcam Section -->
+                <div class="dashboard-item">
+                    <h3>Live Webcam</h3>
+                    <button onclick="openDialog('/webcam')">View Webcam Feed</button>
+                </div>
+
+                <!-- Upload Section -->
+                <div class="dashboard-item">
+                    <h3>Upload Video</h3>
+                    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="video" accept="video/*" required>
+                        <button type="submit">View Uploaded Video</button>
+                    </form>
+                </div>
+
+                <!-- Complaint Section -->
+                <div class="dashboard-item">
+                    <h3>File and View Complaints</h3>
+                    <button onclick="logComplaint()">Auto File Complaint</button>
+                    <button onclick="window.location.href='/complaints'">View Complaints</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pothole Detection System. All rights reserved.</p>
+    </footer>
+
+    <div id="dialog" class="dialog">
+        <div class="dialog-content">
+            <button class="dialog-close" onclick="closeDialog()">X</button>
+            <iframe id="dialogFrame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openDialog(url) {
+            document.getElementById('dialogFrame').src = url;
+            document.getElementById('dialog').style.display = 'block';
+        }
+
+        function closeDialog() {
+            document.getElementById('dialog').style.display = 'none';
+            document.getElementById('dialogFrame').src = '';
+        }
+
+        function logComplaint() {
+            fetch('/complaints', { method: 'POST' })
+                .then(() => alert('Complaint Filed Automatically'))
+                .catch(() => alert('Error Filing Complaint'));
+        }
+    </script>
+</body>
+</html>
