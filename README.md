@@ -64,8 +64,7 @@ RoadGuard/
 
 ---
 
-### Future Enhancements  
-- **Rain Detection**: Identify water-filled potholes.  
+### Future Enhancements   
 - **Severity Prediction**: Predict pothole depth and severity more accurately.  
 - **Mobile Integration**: Build a mobile app version.  
 
